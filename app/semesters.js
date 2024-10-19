@@ -1,12 +1,16 @@
 import React from "react";
 import { Text, View, Button, StyleSheet } from "react-native";
 import { useRouter } from "expo-router"
+import { useSession } from "./SessionContext.js";
 
 export default function Semesters() {
+  const { sessionData, updateSessionData } = useSession();
   const route =useRouter();
   const handleButtonPress = (semester) => {
     console.log(`${semester} Button Pressed`);
     // Add navigation or other logic here
+    updateSessionData({SemesterId:semester});
+    //console.log("The Degree id is : ",sessionData.DegreeId);
     route.push("/marks");
   };
 
