@@ -11,6 +11,7 @@ export const SessionProvider = ({ children }) => {
     isLoggedIn: false,
     DegreeId: "",
     SemesterId: "",
+    NumOfYears:"",
   });
 
   const updateSessionData = (newData) => {

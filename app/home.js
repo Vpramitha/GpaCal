@@ -39,9 +39,10 @@ export default function Home() {
     fetchDegrees(); // Call the function when the component mounts
   }, []);
 
-  const handleButtonPress = (degreeName) => {
-    console.log(`${degreeName} Button Pressed`);
-    updateSessionData({ DegreeId: degreeName });
+  const handleButtonPress = (degreeId,numOfYears) => {
+    console.log(`${degreeId} Button Pressed`);
+    console.log("numOfYears : ", numOfYears);
+    updateSessionData({ DegreeId: degreeId ,NumOfYears:numOfYears});
     router.push("/semesters"); // Navigate to the next page (replace this with the appropriate behavior)
   };
 
@@ -84,7 +85,7 @@ export default function Home() {
         <View key={degree.id} style={styles.buttonContainer}>
           <Button
             title={degree.DegreeName} // Display the degree name on the button
-            onPress={() => handleButtonPress(degree.DegreeName)}
+            onPress={() => handleButtonPress(degree.id, degree.NumOfYears)}
           />
         </View>
       ))}
